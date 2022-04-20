@@ -7,8 +7,8 @@ import ChatList from './ChatList'
 const BotList = ({ token, idCliente }) => {
 
     const [dataList, setDataList] = useState('');
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
     const [searchResult, setSearchResult] = useState('');
     const [nextData, setNextData] = useState(null);
     const [previusData, setPreviusData] = useState(null);
@@ -51,7 +51,7 @@ const BotList = ({ token, idCliente }) => {
         dataList !== '' &&
         <>
             <NavBar clientBots={dataList.map(x => { return { "name": x.name, "id": x.id } })} />
-            <span> <strong>Lista de bots</strong> </span>
+            <h1 style={{ marginLeft: '12vw' }} > <strong>Lista de bots</strong> </h1>
             <table id="customers">
                 <tbody>
                     <tr>
@@ -81,8 +81,8 @@ const BotList = ({ token, idCliente }) => {
             <br />
             <h2 id="customers" >Lista de casos gestionados</h2>
             <div style={{ paddingLeft: '70vw' }} >
-                Desde: &nbsp; <input type="date" name="start" id="" onChange={onChangeStart} /> &nbsp;
-                Hasta: &nbsp; <input type="date" name="end" id="" onChange={onChangeEnd} />
+                Desde: &nbsp; <input type="date" name="start" id="" onChange={onChangeStart} max={endDate} /> &nbsp;
+                Hasta: &nbsp; <input type="date" name="end" id="" onChange={onChangeEnd} min={startDate}/>
                 <button onClick={() => fetchRangeDate()} >Buscar</button>
             </div>
             <br />
