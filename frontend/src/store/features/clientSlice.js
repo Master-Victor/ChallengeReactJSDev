@@ -26,7 +26,7 @@ export const getBotList = createAsyncThunk(
 export const getRangeDate = createAsyncThunk(
     'client/rangeDate',
     async ( { token, url, idCliente, startDate, endDate } ) => {
-        console.log(token, url, idCliente, startDate, endDate)
+
         const requestURL = url === undefined ? `https://admindev.inceptia.ai/api/v1/inbound-case/?client=${idCliente !== 0 ? idCliente : '28'}&local_updated__date__gte=${startDate}&local_updated__date__lte=${endDate}`
             : url
         if (startDate !== null && endDate !== null) {
