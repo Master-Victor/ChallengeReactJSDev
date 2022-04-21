@@ -1,34 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useEffect } from 'react'
 import BotList from './BotList';
-
+import { login } from '../store/features/clientSlice';
+import {useDispatch, useSelector} from 'react-redux';
 const app = () => {
-    const [token, setToken] = useState('asd');
+
+    const dispatch = useDispatch();
+    const tokenRedux = useSelector( store => store.client.token );
+
     useEffect(() => {
 
-        axios.post('https://admindev.inceptia.ai/api/v1/login/', {
-            "email": "reactdev@iniceptia.ai",
-            "password": "4eSBbHqiCTPdBCTj",
-        })
-            .then(function (response) {
-                response.status === 200 && setToken(response.data.token);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        dispatch( login() );
 
     }, [])
-
-    const search = window.location.search;
-    const idCliente = Number( search.replace('?',' ') ) !== 0 
-                        ? Number( search.replace('?',' ') ) 
-                        : 28;
 
     return (
         <>
             {
-                token !== '' 
-                    ? <BotList token={token} idCliente={ idCliente }/>
+                tokenRedux !== '' 
+                    ? <BotList token={tokenRedux}/>
                     : <h1>Loading..</h1>
             }
         </>
