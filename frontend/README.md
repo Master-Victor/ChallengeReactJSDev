@@ -9,6 +9,10 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## En caso que no se pueda observar siguiente y anterior en la lista ejecutar el siguiente comando con 
+  1)    wir+R
+  2)    chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security
+
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
