@@ -14,6 +14,7 @@ import Example from './component/Example';
 import NavBar from './component/NavBar';
 import { Provider } from 'react-redux';
 import store from './store/store';
+
 ReactDOM.render(
   <Provider store={store} >
     <BrowserRouter>
